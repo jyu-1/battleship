@@ -1,0 +1,32 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "battleship",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --testPathPattern=src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jyu-1/battleship.git"
+  },
+  "author": "jyu-1",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jyu-1/battleship/issues"
+  },
+  "homepage": "https://github.com/jyu-1/battleship#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.19.4",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.26.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "jest": "^29.2.2",
+    "prettier": "^2.7.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}

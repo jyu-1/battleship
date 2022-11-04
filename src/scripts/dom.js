@@ -1,6 +1,8 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable import/prefer-default-export */
 
+import { getComputerMove } from "../";
+
 const domGrid = (array, player) => {
     if (player === true) {
         const gameGrid = document.querySelector(".player-grid");
@@ -28,18 +30,17 @@ const domGrid = (array, player) => {
             const square = document.createElement("button");
             square.classList.add("squares");
 
-            if (array[key] === "empty") square.textContent = "";
-            else if (array[key] === "hit")
+            if (array[key] === "empty" || array[key] === "ship") {
+                square.textContent = "";
+                square.addEventListener("click", () => {
+                    if (array[key] === "ship") array[key] = "hit";
+                    else if (array[key] === "empty") array[key] = "miss";
+                    domGrid(array, player);
+                    getComputerMove();
+                });
+            } else if (array[key] === "hit")
                 square.style.backgroundColor = "pink";
-            else if (array[key] === "ship")
-                square.style.backgroundColor = "lightblue";
             else if (array[key] === "miss") square.disabled = true;
-
-            square.addEventListener("click", () => {
-                if (array[key] === "ship") array[key] = "hit";
-                else if (array[key] === "empty") array[key] = "miss";
-                domGrid(array, player);
-            });
 
             gameGrid.appendChild(square);
         });

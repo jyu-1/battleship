@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+import { domGrid } from "./dom";
 
 const Ship = (length) => {
     let health = length;
@@ -21,9 +22,12 @@ const Gameboard = () => {
 
     for (let i = 0; i < 10; i += 1) {
         for (let k = 0; k < 10; k += 1) {
-            board.push([i, k]);
+            board[[i, k]] = "empty";
         }
     }
+
+    domGrid(board, ".player-grid");
+    domGrid(board, ".computer-grid");
 
     const receiveAttack = (coord) => {
         if (board[coord] === true) {

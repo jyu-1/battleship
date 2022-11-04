@@ -36,8 +36,19 @@ main {
     grid-template-columns: repeat(10, 40px);
     grid-template-rows: repeat(10, 40px);
     border: 1px solid black;
-    justify-items: center;
-    align-items: center;
+}
+
+.squares {
+    border: 1px solid rgb(175, 175, 175);
+    background-color: rgb(255, 255, 255);
+}
+
+.squares:disabled {
+    background-color: rgb(225, 225, 225);
+}
+
+.squares:hover {
+    background-color: rgb(200, 200, 200);
 }
 
 /* Footer */

@@ -1,6 +1,20 @@
 /* eslint-disable import/prefer-default-export */
 import { domGrid } from "./dom";
 
+function checkValid(array, length, orientation, randomX, randomY) {
+    if (orientation === 0) {
+        for (let i = 0; i < length; i += 1) {
+            if (array[[randomX + i, randomY]] !== "empty") return false;
+        }
+        return true;
+    }
+
+    for (let i = 0; i < length; i += 1) {
+        if (array[[randomX, randomY + i]] !== "empty") return false;
+    }
+    return true;
+}
+
 const Ship = (length) => {
     let health = length;
 
@@ -14,15 +28,46 @@ const Ship = (length) => {
         return false;
     };
 
-    return { hit, isSunk };
+    return { hit, isSunk, length };
 };
 
-const Gameboard = () => {
+const Gameboard = (player) => {
     const board = [];
 
     for (let i = 0; i < 10; i += 1) {
         for (let k = 0; k < 10; k += 1) {
             board[[i, k]] = "empty";
+        }
+    }
+
+    let shipCount = 0;
+
+    while (shipCount < 5) {
+        const randomX = Math.floor(Math.random() * 10);
+        const randomY = Math.floor(Math.random() * 10);
+        const orientation = Math.floor(Math.random() * 2);
+
+        const temp = checkValid(
+            board,
+            player.ships[shipCount].length,
+            orientation,
+            randomX,
+            randomY
+        );
+        if (temp === true) {
+            if (orientation === 0) {
+                for (let i = 0; i < player.ships[shipCount].length; i += 1) {
+                    board[[randomX + i, randomY]] = "ship";
+                }
+
+                shipCount += 1;
+            } else {
+                for (let i = 0; i < player.ships[shipCount].length; i += 1) {
+                    board[[randomX, randomY + i]] = "ship";
+                }
+
+                shipCount += 1;
+            }
         }
     }
 
@@ -39,20 +84,16 @@ const Gameboard = () => {
     return { board, receiveAttack };
 };
 
-const Player = () => {
-    const carrier = Ship(5);
-    const battleship = Ship(4);
-    const cruiser = Ship(3);
-    const submarine = Ship(3);
-    const destroyer = Ship(2);
+const Player = (isPlayer) => {
+    const ships = [Ship(5), Ship(4), Ship(3), Ship(3), Ship(2)];
 
     const checkState = () => {
         if (
-            carrier.isSunk() === true &&
-            battleship.isSunk() === true &&
-            cruiser.isSunk() === true &&
-            submarine.isSunk() === true &&
-            destroyer.isSunk() === true
+            ships[0].isSunk() === true &&
+            ships[1].isSunk() === true &&
+            ships[2].isSunk() === true &&
+            ships[3].isSunk() === true &&
+            ships[4].isSunk() === true
         ) {
             return true;
         }
@@ -62,10 +103,10 @@ const Player = () => {
     const hit = () => {
         const randomX = Math.floor(Math.random() * 10);
         const randomY = Math.floor(Math.random() * 10);
-        return [randomX, randomY];
+        return [randomX, randomY, ships];
     };
 
-    return { hit, checkState };
+    return { hit, checkState, ships };
 };
 
 export { Ship, Gameboard, Player };

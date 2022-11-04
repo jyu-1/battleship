@@ -41,6 +41,7 @@ main {
 .squares {
     border: 1px solid rgb(175, 175, 175);
     background-color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 .squares:disabled {

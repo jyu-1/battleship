@@ -71,8 +71,8 @@ const Gameboard = (player) => {
         }
     }
 
-    domGrid(board, ".player-grid");
-    domGrid(board, ".computer-grid");
+    if (player.isPlayer === true) domGrid(board, player.isPlayer);
+    else domGrid(board, player.isPlayer);
 
     const receiveAttack = (coord) => {
         if (board[coord] === true) {
@@ -106,7 +106,7 @@ const Player = (isPlayer) => {
         return [randomX, randomY, ships];
     };
 
-    return { hit, checkState, ships };
+    return { hit, checkState, ships, isPlayer };
 };
 
 export { Ship, Gameboard, Player };

@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { domGrid } from "./dom";
+import { domGrid, statusMessage } from "./dom";
 
 function checkValid(array, length, orientation, randomX, randomY) {
     if (orientation === 0) {
@@ -94,18 +94,23 @@ const Gameboard = (player) => {
         if (board[[randomX, randomY]] === 0) {
             board[[randomX, randomY]] = "hit";
             player.ships[0].hit();
+            statusMessage(0, player.isPlayer);
         } else if (board[[randomX, randomY]] === 1) {
             board[[randomX, randomY]] = "hit";
             player.ships[1].hit();
+            statusMessage(1, player.isPlayer);
         } else if (board[[randomX, randomY]] === 2) {
             board[[randomX, randomY]] = "hit";
             player.ships[2].hit();
+            statusMessage(2, player.isPlayer);
         } else if (board[[randomX, randomY]] === 3) {
             board[[randomX, randomY]] = "hit";
             player.ships[3].hit();
+            statusMessage(3, player.isPlayer);
         } else if (board[[randomX, randomY]] === 4) {
             board[[randomX, randomY]] = "hit";
             player.ships[4].hit();
+            statusMessage(4, player.isPlayer);
         } else if (board[[randomX, randomY]] === "empty")
             board[[randomX, randomY]] = "miss";
 

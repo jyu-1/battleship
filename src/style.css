@@ -15,7 +15,7 @@ body {
 
 /* Header */
 header {
-    flex: 0 0 50px;
+    flex: 0 0 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,6 +36,14 @@ main {
     grid-template-columns: repeat(10, 40px);
     grid-template-rows: repeat(10, 40px);
     border: 1px solid black;
+}
+
+.player-status,
+.computer-status {
+    text-align: center;
+    margin-top: -300px;
+    margin-bottom: 100px;
+    font-size: 1.5rem;
 }
 
 .squares {

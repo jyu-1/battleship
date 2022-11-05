@@ -103,8 +103,24 @@ main {
     font-weight: bold;
     box-shadow: 0 0 5px black;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 20px;
+}
+
+.restart {
+    border: none;
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: lightblue;
+    font-size: 1rem;
+}
+
+.restart:hover {
+    cursor: pointer;
+    background-color: rgb(134, 174, 187);
 }
 
 /* Footer */

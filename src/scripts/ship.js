@@ -58,13 +58,13 @@ const Gameboard = (player) => {
         if (temp === true) {
             if (orientation === 0) {
                 for (let i = 0; i < player.ships[shipCount].length; i += 1) {
-                    board[[randomX + i, randomY]] = "ship";
+                    board[[randomX + i, randomY]] = shipCount;
                 }
 
                 shipCount += 1;
             } else {
                 for (let i = 0; i < player.ships[shipCount].length; i += 1) {
-                    board[[randomX, randomY + i]] = "ship";
+                    board[[randomX, randomY + i]] = shipCount;
                 }
 
                 shipCount += 1;
@@ -75,34 +75,44 @@ const Gameboard = (player) => {
     if (player.isPlayer === true) domGrid(board, player.isPlayer);
     else domGrid(board, player.isPlayer);
 
-    const receiveAttack = (coord) => {
-        if (board[coord] === true) {
-            return true;
-        }
-        return false;
-    };
-
     const hit = () => {
         let randomX = Math.floor(Math.random() * 10);
         let randomY = Math.floor(Math.random() * 10);
 
         while (
             board[[randomX, randomY]] !== "empty" &&
-            board[[randomX, randomY]] !== "ship"
+            board[[randomX, randomY]] !== 0 &&
+            board[[randomX, randomY]] !== 1 &&
+            board[[randomX, randomY]] !== 2 &&
+            board[[randomX, randomY]] !== 3 &&
+            board[[randomX, randomY]] !== 4
         ) {
             randomX = Math.floor(Math.random() * 10);
             randomY = Math.floor(Math.random() * 10);
         }
 
-        if (board[[randomX, randomY]] === "ship")
+        if (board[[randomX, randomY]] === 0) {
             board[[randomX, randomY]] = "hit";
-        else if (board[[randomX, randomY]] === "empty")
+            player.ships[0].hit();
+        } else if (board[[randomX, randomY]] === 1) {
+            board[[randomX, randomY]] = "hit";
+            player.ships[1].hit();
+        } else if (board[[randomX, randomY]] === 2) {
+            board[[randomX, randomY]] = "hit";
+            player.ships[2].hit();
+        } else if (board[[randomX, randomY]] === 3) {
+            board[[randomX, randomY]] = "hit";
+            player.ships[3].hit();
+        } else if (board[[randomX, randomY]] === 4) {
+            board[[randomX, randomY]] = "hit";
+            player.ships[4].hit();
+        } else if (board[[randomX, randomY]] === "empty")
             board[[randomX, randomY]] = "miss";
 
         domGrid(board, player.isPlayer);
     };
 
-    return { board, receiveAttack, hit };
+    return { board, hit };
 };
 
 const Player = (isPlayer) => {

@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { Gameboard, Player } from "./scripts/ship";
+import { Player, Gameboard } from "./scripts/ship";
 import "./style.css";
 
 const player = Player(true);
@@ -11,4 +11,12 @@ const getComputerMove = () => {
     playerBoard.hit();
 };
 
-export { getComputerMove };
+const hitNpc = (num) => {
+    npc.ships[num].hit();
+};
+
+const checkWin = () => {
+    console.log(npc.checkState());
+};
+
+export { getComputerMove, hitNpc, checkWin };

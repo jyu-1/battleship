@@ -44,8 +44,7 @@ const domGrid = (array, player) => {
             square.classList.add("squares");
 
             if (array[key] === "empty") square.textContent = "";
-            else if (array[key] === "hit")
-                square.style.backgroundColor = "pink";
+            else if (array[key] === "hit") square.style.backgroundColor = "red";
             else if (
                 array[key] === 0 ||
                 array[key] === 1 ||
@@ -53,9 +52,9 @@ const domGrid = (array, player) => {
                 array[key] === 3 ||
                 array[key] === 4
             )
-                square.style.backgroundColor = "lightblue";
+                square.style.backgroundColor = "blue";
             else if (array[key] === "miss")
-                square.style.backgroundColor = "#E1E1E1";
+                square.style.backgroundColor = "grey";
 
             gameGrid.appendChild(square);
         });
@@ -103,7 +102,7 @@ const domGrid = (array, player) => {
                     getComputerMove();
                 });
             } else if (array[key] === "hit")
-                square.style.backgroundColor = "pink";
+                square.style.backgroundColor = "red";
             else if (array[key] === "miss") square.disabled = true;
 
             gameGrid.appendChild(square);

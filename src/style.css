@@ -8,6 +8,11 @@
 
 body {
     font-family: "Nunito Sans", sans-serif;
+    background-image: url(./assets/battleship.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -15,10 +20,14 @@ body {
 
 /* Header */
 header {
-    flex: 0 0 100px;
+    flex: 0 0 200px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 5rem;
+    font-weight: bold;
 }
 
 /* Main */
@@ -36,14 +45,21 @@ main {
     grid-template-columns: repeat(10, 40px);
     grid-template-rows: repeat(10, 40px);
     border: 1px solid black;
+    opacity: 0.85;
 }
 
 .player-status,
 .computer-status {
-    text-align: center;
-    margin-top: -300px;
+    margin-top: -200px;
     margin-bottom: 100px;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .squares {
@@ -53,7 +69,7 @@ main {
 }
 
 .squares:disabled {
-    background-color: rgb(225, 225, 225);
+    background-color: grey;
 }
 
 .squares:hover {
@@ -66,4 +82,10 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+}
+
+footer a {
+    color: white;
 }

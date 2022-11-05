@@ -98,8 +98,10 @@ const domGrid = (array, player) => {
                         statusMessage(4, player);
                     } else if (array[key] === "empty") array[key] = "miss";
                     domGrid(array, player);
-                    checkWin();
+                    checkWin(true);
                     getComputerMove();
+                    checkWin(false);
+                    console.log(array);
                 });
             } else if (array[key] === "hit")
                 square.style.backgroundColor = "red";

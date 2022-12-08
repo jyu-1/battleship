@@ -1,4 +1,4 @@
-# Battleship game
+# Battleship Game
 
 Destroy all of AI's ship before they destroy all of yours!\
 Ships are placed randomly around the board.\
